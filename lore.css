@@ -1,0 +1,224 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  overflow: hidden;
+  background: black;
+}
+
+.scene {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+.mural {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: auto;
+  will-change: transform;
+}
+
+.lore-card {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  width: 480px;
+  padding: 22px;
+  background: rgba(0,0,0,0.85);
+  border-radius: 8px;
+  color: white;
+}
+
+.story-text {
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 80px;
+}
+
+.controls {
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mute-btn,
+.arrows button {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  padding: 7px 12px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+/* MARKERS */
+
+.markers {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.markers span {
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+
+.markers .active {
+  background: white;
+}
+
+/* SMALLER STRIP */
+
+/* STRIP WRAPPER */
+
+.strip-wrapper {
+  margin-top: 16px;
+  position: relative;
+  height: 75px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+}
+
+/* Full strip image */
+
+.strip-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: auto;
+  opacity: 1;
+  filter: brightness(-100); /* darkened overall */
+}
+
+/* Dark overlay */
+
+.strip-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+
+/* Viewport highlight */
+
+.viewport-box {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border: 2px solid white;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: brightness(1.4);
+  box-shadow: 0 0 12px rgba(255,255,255,0.4);
+  cursor: grab;
+  z-index: 3;
+}
+
+.viewport-box {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border: 2px solid white;
+  background: rgba(255,255,255,0.08);
+  cursor: grab;
+}
+
+/* INTRO OVERLAY */
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.6s ease;
+}
+
+.intro-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-content {
+  text-align: center;
+  color: white;
+  max-width: 600px;
+}
+
+.intro-content p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.explore-btn {
+  padding: 14px 32px;
+  border-radius: 30px;
+  border: none;
+  background: white;
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.explore-btn:hover {
+  transform: scale(1.05);
+}
+/* BURGER MENU */
+
+.burger {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 28px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.burger span {
+  height: 2px;
+  width: 100%;
+  background: white;
+  transition: 0.3s ease;
+}
+
+/* Animate to X */
+
+.burger.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}

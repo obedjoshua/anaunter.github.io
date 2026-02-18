@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lore</title>
+<link rel="stylesheet" href="lore.css">
+<link rel="icon" type="image/x-icon" href="https://image2url.com/r2/default/images/1771160476983-39d1491d-9b11-47bd-bcca-5b484f800ba7.png">
+</head>
+<body>
+    <!-- MENU BURGER -->
+<div class="burger" id="burger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+    <div class="intro-overlay" id="introOverlay">
+  <div class="intro-content">
+    <p>
+      People in the Alley walk by this mural daily.<br>
+      But few know its link to the Garden's origin.
+    </p>
+    <button id="exploreBtn" class="explore-btn">
+      EXPLORE →
+    </button>
+  </div>
+</div>
+
+<div class="scene">
+  <img src="graffiti_bg_final.jpg" id="mural" class="mural">
+</div>
+
+<div class="lore-card">
+
+  <div class="story-text" id="storyText"></div>
+
+  <div class="controls">
+    <button id="muteBtn" class="mute-btn">🔊</button>
+
+    <div class="arrows">
+      <button id="prevBtn">←</button>
+      <button id="nextBtn">→</button>
+    </div>
+  </div>
+
+  <!-- DOT MARKERS -->
+  <div class="markers" id="markers"></div>
+
+  <!-- MINIMAP -->
+  <div class="strip-wrapper" id="stripWrapper">
+    <img src="graffiti_bg_final.jpg" class="strip-image">
+    <div class="viewport-box" id="viewportBox"></div>
+  </div>
+
+</div>
+
+<audio id="bgMusic" autoplay loop>
+  <source src="resources/Above All.mp3" type="audio/mp3">
+</audio>
+
+<script src="lore.js"></script>
+</body>
+</html>

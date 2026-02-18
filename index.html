@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANAUNTER</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="https://image2url.com/r2/default/images/1771160476983-39d1491d-9b11-47bd-bcca-5b484f800ba7.png">
+</head>
+<body>
+    <div class="burger" id="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <section class="video-section">
+        <video autoplay muted loop>
+            <source src="resources/videoplayback.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+            <img src="https://nftplazas.com/wp-content/uploads/2025/07/azuki-elementals-1-companion-nfts-1024x576.webp" alt="Background Image">
+        </video>
+        <div class="scroll-indicator" id="scrollIndicator">
+          SCROLL FOR MORE ↓
+        </div>
+    </section>
+    <div>
+        <a href="index.html">
+            <img class="logo" src="https://image2url.com/r2/default/images/1771157933965-1bb70977-0558-47e9-88f3-b5fd12c9156a.png" alt="Logo">
+        </a>
+    </div>
+    <div class="music-player">
+      <img 
+        src="https://www.azuki.com/_next/image?url=https%3A%2F%2Fstatic-content.azuki.com%2Fassets%2Fjax.png&w=256&q=75" 
+        class="character"
+      >
+      <div class="player-content">
+        <div class="track-info">
+          <div class="track-title" id="title">WRATH</div>
+          <div class="track-artist" id="artist">FREDDIE DREDD</div>
+        </div>
+        <div class="player-controls">
+          <button id="prev">⏮</button>
+          <button id="play" class="play">▶</button>
+          <button id="next">⏭</button>
+        </div>
+      </div>
+    </div>
+    <audio id="audio"></audio>
+    <div class="ad-place">
+      <img src="" class="sec-character">
+      <div class="alpha-text">
+        <div class="visit">VISIT</div>
+        <h3>INSPIRED BY AZUKI</h3>
+        <p>Visit their awesome website.</p>
+      </div>
+    </div>
+    <section class="white-section">
+        <div class="content">
+            <h1>Next Section</h1>
+            <p>This appears after scrolling.</p>
+        </div>
+    </section>
+    <script>
+      const audio = document.getElementById("audio");
+      const playBtn = document.getElementById("play");
+      const prevBtn = document.getElementById("prev");
+      const nextBtn = document.getElementById("next");
+      const title = document.getElementById("title");
+      const artist = document.getElementById("artist");
+
+      const songs = [
+        {
+          title: "HANG UP",
+          artist: "WRLD (feat. Savoi)",
+          src: "resources/hang up.mp3",
+        },
+        {
+          title: "SHIAWASE [VIP]",
+          artist: "Dion Timmer",
+          src: "resources/Dion Timmer - Shiawase (VIP) [Monstercat Release].mp3",
+        },
+        {
+          title: "PATHFINDER",
+          artist: "Odyssette",
+          src: "resources/Odyssette - Pathfinder (Official Audio).mp3",
+        },
+        {
+          title: "PLUTO PROJECTOR BEST PART",
+          artist: "Rex Orange County",
+          src: "resources/old enough to understand (pluto projector orchestra) listen with earphones!.mp3",
+        },
+        {
+          title: "SORRY MR. ATARI",
+          artist: "Avicii",
+          src: "resources/avici - so sorry mr atari.mp3",
+        },
+        {
+          title: "ELO",
+          artist: "Noche",
+          src: "resources/Noche - ELO.mp3",
+        },
+        {
+          title: "1998 CITY",
+          artist: "VANTAGE",
+          src: "resources/VANTAGE - 1998 City.mp3",
+        },
+        {
+          title: "TELL ME",
+          artist: "Saint Pepsi",
+          src: "resources/SAINT PEPSI - tell me.mp3",
+        },
+        {
+          title: "YOUR SECRETS",
+          artist: "SUI UZI",
+          src: "resources/SUI UZI - Your Secrets.mp3",
+        },
+      ];
+      
+      let songIndex = 0;
+      
+      function loadSong(song) {
+        title.textContent = song.title;
+        artist.textContent = song.artist;
+        audio.src = song.src;
+      }
+
+      function playSong() {
+        audio.play();
+        playBtn.textContent = "⏸";
+      }
+
+      function pauseSong() {
+        audio.pause();
+        playBtn.textContent = "▶";
+      }
+
+      playBtn.addEventListener("click", () => {
+        if (audio.paused) {
+          playSong();
+        } else {
+          pauseSong();
+        }
+      });
+
+      prevBtn.addEventListener("click", () => {
+        songIndex--;
+        if (songIndex < 0) songIndex = songs.length - 1;
+        loadSong(songs[songIndex]);
+        playSong();
+      });
+
+      nextBtn.addEventListener("click", () => {
+        songIndex++;
+        if (songIndex > songs.length - 1) songIndex = 0;
+        loadSong(songs[songIndex]);
+        playSong();
+      });
+
+      audio.addEventListener("ended", () => {
+        nextBtn.click();
+      });
+
+      loadSong(songs[songIndex]);
+
+      document.addEventListener("DOMContentLoaded", function() {
+        const burger = document.getElementById("burger");
+      
+        burger.addEventListener("click", () => {
+          window.location.href = "menu.html";
+        });
+      });
+
+      window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+      });
+
+      const whiteSection = document.querySelector(".white-section");
+      const burger = document.getElementById("burger");
+
+      window.addEventListener("scroll", () => {
+        const sectionTop = whiteSection.offsetTop;
+        const scrollPosition = window.scrollY + 50;
+      
+        if (scrollPosition >= sectionTop) {
+          burger.classList.add("dark");
+        } else {
+          burger.classList.remove("dark");
+        }
+      });
+      const scrollIndicator = document.getElementById("scrollIndicator");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          scrollIndicator.classList.add("hidden");
+        } else {
+          scrollIndicator.classList.remove("hidden");
+        }
+      });
+    </script>
+</body>
+</html>

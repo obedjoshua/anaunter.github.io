@@ -1,0 +1,353 @@
+@import url('https://fonts.cdnfonts.com/css/jumbotron');
+@import url('https://fonts.cdnfonts.com/css/taruno-wide');
+@import url('https://fonts.cdnfonts.com/css/ncl-rabegs');
+@import url('https://fonts.cdnfonts.com/css/gitky-trial');
+@import url('https://fonts.cdnfonts.com/css/br-cobane');
+@import url('https://fonts.cdnfonts.com/css/banner');
+
+@font-face {
+    font-family: "Azuki";
+    src: url("MangoGrotesque-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Eula";
+    src: url("Typographica-Blp5.ttf") format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Azuki", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: black;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+/* Outer wrapper (adds space top & bottom) */
+.section-wrapper {
+  padding: 7px 7px;
+}
+
+/* Panels row */
+.panels {
+  display: flex;
+  gap: 7px; /* space between panels */
+  height: 98vh;
+}
+
+/* Individual panel */
+.panel {
+  flex: 1;
+}
+
+/* Inner box (image container) */
+.panel-inner {
+  position: relative;
+  height: 100%;
+  border-radius: 0px;
+  overflow: hidden;
+  background: #111;
+}
+
+/* Image */
+.image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: grayscale(100%) brightness(0.6);
+}
+
+.logo {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  height: 45px;
+  width: auto;
+  display: block;
+  z-index: 5;
+  filter: brightness(0.8);
+  transition: filter 0.3s ease;
+}
+
+.logo:hover {
+  filter: brightness(1.2);
+}
+
+/* Black text bar */
+.text-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #000;
+  padding: 24px;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+  z-index: 2;
+}
+
+.text-bar h2 {
+  font-family: "Eula", serif;
+  color: white;
+  font-size: 40px;
+  letter-spacing: 2px;
+}
+
+.text-bar span {
+  color: #f4c542;
+  font-size: 20px;
+  margin-left: 8px;
+}
+
+/* Hover effect */
+.panel-inner:hover .image {
+  transform: translateY(-18px); /* very subtle */
+  filter: grayscale(0%) brightness(1);
+}
+
+.panel-inner:hover .text-bar {
+  transform: translateY(0);
+}
+
+/* Dim other panels */
+.panels:hover .panel-inner:not(:hover) .image {
+  filter: grayscale(100%) brightness(0.35);
+}
+
+.video-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.video-section video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(20%);
+  z-index: -1;
+}
+
+.music-player {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 420px;
+  padding: 10px 24px 10px 100px;
+  background: rgba(60, 60, 70, 0.75);
+  backdrop-filter: blur(14px);
+  border-radius: 10px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  color: white;
+  z-index: 1000;
+  overflow: visible; 
+  border: 1px solid rgba(207, 201, 201, 0.425);
+}
+
+.character {
+  position: absolute;
+  left: 0px;
+  bottom: 0;
+  height: 90px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.player-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.track-title {
+  font-family: "BANNER", serif;
+  left: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.track-artist {
+  font-family: "Taruno Wide", serif;
+  font-size: 8px;
+  opacity: 0.6;
+  letter-spacing: 2px;
+}
+
+.player-controls {
+  display: flex;
+  gap: 18px;
+}
+
+.player-controls button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.2s ease;
+}
+
+.player-controls button:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.play {
+  font-size: 24px;
+}
+
+/* Burger container */
+.burger {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 2000;
+}
+
+/* Lines */
+.burger span {
+  height: 2px;
+  width: 100%;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+/* X animation */
+.burger.active span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+.menu-close {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+/* Lines */
+.menu-close span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: white;
+  transform-origin: center;
+  transition: 0.3s ease;
+}
+
+/* Create the X */
+.menu-close span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.menu-close span:nth-child(2) {
+  transform: rotate(-45deg);
+}
+
+/* Hover effect */
+.menu-close:hover span {
+  background: #f4c542; /* or your accent color */
+}
+
+.white-section {
+  border-top: 10px solid red;
+  background: #faf9f6;
+  min-height: 100vh;
+  padding: 100px 40px;
+  color: black;
+}
+
+.burger.dark span {
+  background: black;
+}
+
+.scroll-indicator {
+  position: absolute;
+  font-family: 'BR Cobane', sans-serif;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: white;
+  opacity: 0.3;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+
+/* Hide state */
+.scroll-indicator.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+}
+
+.image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.15) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  filter:blur(20px);
+}
+
+.panel-inner:hover .image::after {
+  animation: shine 0.9s ease forwards;
+}
+
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 130%;
+  }
+}
+
+.panel-link {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
